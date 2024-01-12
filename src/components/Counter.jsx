@@ -7,7 +7,7 @@ import {
 } from "../features/counterSlice";
 
 export default function Counter() {
-  const count = useSelector((state) => state.value);
+  const count = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
   const [input, setInput] = useState(0);
 
@@ -18,14 +18,17 @@ export default function Counter() {
 
   return (
     <div>
-      <h1>{count}</h1>
+      <h1>Counter</h1>
+      <h2>{count}</h2>
       <button onClick={() => dispatch(increment())}>+</button>
       <button onClick={() => dispatch(decrement())}>-</button>
       <form onSubmit={(e) => incrementByAmountHandler(e)}>
         <input
           type="number"
-          value={input}
+          value= {input}
           onChange={(e) => setInput(e.target.value)}
+          placeholder="Enter amount to increment by"
+        
         />
         <button type="submit">Submit</button>
       </form>
